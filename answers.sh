@@ -57,7 +57,7 @@ echo answer-4: $answer_4
 Hamlet=$datasets/misc/hamlet.txt
 
 answer_5=$(cat $Hamlet \
-    | grep 'bloody'\
+    | grep -i 'bloody'\
     | wc -w)
 
 echo answer-5: $answer_5
@@ -70,6 +70,7 @@ fasta=$datasets/fasta/sample.fa
 answer_6=$(cat $fasta \
     | grep -v '^>'\
     | head -n1\
+    | tr -d '\n'\
     | wc -c)
 
 echo answer-6: $answer_6
