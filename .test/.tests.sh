@@ -14,7 +14,7 @@ if [[ ! -f $answerfile ]]; then
 fi
 
 answers=('North_Dakota' 4 438 250 57
-         20 'LOC100288142' 60 3325 'chr9')
+         20 'LOC100288142' 25 3325 'chr9')
 
 for answer_num in $(seq 1 10); do
     truth=${answers[$(($answer_num - 1))]}
