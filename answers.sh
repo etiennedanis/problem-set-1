@@ -21,9 +21,7 @@ echo answer-1: $answer_1
 
 fasta=$datasets/fasta/sample.fa
 
-answer_2=$(cat $fasta \
-    | grep -v '^>' \
-    | wc -l)
+answer_2=$(grep -c "^>" $fasta)
 
 echo answer-2: $answer_2
 
@@ -45,9 +43,7 @@ echo answer-3: $answer_3
 
 SP1=$datasets/fastq/SP1.fq
 
-answer_4=$(cat $SP1 \
-    | grep '^@cluster'\
-    | wc -l)
+answer_4=$(grep -c '^@cluster' $SP1)
 
 echo answer-4: $answer_4
 
@@ -56,9 +52,7 @@ echo answer-4: $answer_4
 
 Hamlet=$datasets/misc/hamlet.txt
 
-answer_5=$(cat $Hamlet \
-    | grep -i 'bloody'\
-    | wc -w)
+answer_5=$(grep -i 'bloody' $Hamlet| wc -w)
 
 echo answer-5: $answer_5
 
@@ -67,9 +61,8 @@ echo answer-5: $answer_5
 
 fasta=$datasets/fasta/sample.fa
 
-answer_6=$(cat $fasta \
-    | grep -v '^>'\
-    | head -n1\
+answer_6=$(grep -v '^>' $fasta \
+    | head -n1 \
     | tr -d '\n'\
     | wc -c)
 
@@ -96,7 +89,7 @@ hg19=$datasets/bed/genes.hg19.bed.gz
 answer_8=$(zcat $hg19 \
     | cut -f1 \
     | sort \
-    | uniq -c \
+    | uniq \
     | wc -l)
 
 echo answer-8: $answer_8
